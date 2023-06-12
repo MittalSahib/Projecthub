@@ -31,8 +31,8 @@ int accept_reject(char cemail[30],char pemail[30], int patentno,char acc[10])
     FILE *sp = NULL,*temp = NULL;
     int count = 0,line = -1;
     struct ideaselect2 *first = (struct ideaselect2 *)malloc(sizeof(struct ideaselect2));
-    sp = fopen("C:\\Users\\assu\\OneDrive\\Desktop\\folders\\Projects\\projecthub\\Files\\selectedideas.txt","r");
-    temp = fopen("C:\\Users\\assu\\OneDrive\\Desktop\\folders\\Projects\\projecthub\\Files\\temp_selectedideas.txt","w");
+    sp = fopen("C:\\Files\\selectedideas.txt","r");
+    temp = fopen("C:\\Files\\temp_selectedideas.txt","w");
     if(sp == NULL || temp == NULL) 
     {
         free(first);
@@ -72,8 +72,8 @@ int accept_reject(char cemail[30],char pemail[30], int patentno,char acc[10])
     }
     fclose(sp);
     fclose(temp);
-    remove("C:\\Users\\assu\\OneDrive\\Desktop\\folders\\Projects\\projecthub\\Files\\selectedideas.txt");
-    rename("C:\\Users\\assu\\OneDrive\\Desktop\\folders\\Projects\\projecthub\\Files\\temp_selectedideas.txt","C:\\Users\\assu\\OneDrive\\Desktop\\folders\\Projects\\projecthub\\Files\\selectedideas.txt");
+    remove("C:\\Files\\selectedideas.txt");
+    rename("C:\\Files\\temp_selectedideas.txt","C:\\Files\\selectedideas.txt");
     free(first);
     return 0;
 }
@@ -107,7 +107,7 @@ int ideasubmit(char a[30],char b[100],char c[1000000],int pcount)     // functio
         }
         if(first->description[i] == '\n') first->description[i] = '\0';
     }
-    f = fopen("C:\\Users\\assu\\OneDrive\\Desktop\\folders\\Projects\\projecthub\\Files\\patent.txt","a+");
+    f = fopen("C:\\Files\\patent.txt","a+");
     if(f == NULL)
     {
         free(first);
@@ -123,8 +123,8 @@ int updation_of_idea(char a[30], int n_o_p, char b, char d[1000000])     //updat
     FILE *f,*temp;       // two files one for patent file and one for temprary file to save data
     int i,count1 = 0,line;
     struct subnode *first = (struct subnode *)malloc(sizeof(struct subnode));       
-    f = fopen("C:\\Users\\assu\\OneDrive\\Desktop\\folders\\Projects\\projecthub\\Files\\patent.txt","r");   // opening of file patent.txt for updation
-    temp = fopen("C:\\Users\\assu\\OneDrive\\Desktop\\folders\\Projects\\projecthub\\Files\\temp_patent.txt","w"); // opening of file temp_patent for temprarily store data
+    f = fopen("C:\\Files\\patent.txt","r");   // opening of file patent.txt for updation
+    temp = fopen("C:\\Files\\temp_patent.txt","w"); // opening of file temp_patent for temprarily store data
     if(f == NULL || temp == NULL)     // if either of the file does not open then it will return 1;
     {
         free(first);
@@ -164,8 +164,8 @@ int updation_of_idea(char a[30], int n_o_p, char b, char d[1000000])     //updat
     }
     fclose(f);
     fclose(temp);
-    remove("C:\\Users\\assu\\OneDrive\\Desktop\\folders\\Projects\\projecthub\\Files\\patent.txt");  // removing patent.txt file from the location
-    rename("C:\\Users\\assu\\OneDrive\\Desktop\\folders\\Projects\\projecthub\\Files\\temp_patent.txt","C:\\Users\\assu\\OneDrive\\Desktop\\folders\\Projects\\projecthub\\Files\\patent.txt");
+    remove("C:\\Files\\patent.txt");  // removing patent.txt file from the location
+    rename("C:\\Files\\temp_patent.txt","C:\\Files\\patent.txt");
     free(first);
     return 0;  // indication of successful termination
 }
@@ -177,7 +177,7 @@ struct dash cdashboard(char a[30]) // function for creater dashboard takes email
     struct ideas *h,*s;
     int count = 0,i,c = 0;
     struct subnode *first = (struct subnode *)malloc(sizeof(struct subnode));
-    p = fopen("C:\\Users\\assu\\OneDrive\\Desktop\\folders\\Projects\\projecthub\\Files\\patent.txt","r"); // opening of file 
+    p = fopen("C:\\Files\\patent.txt","r"); // opening of file 
     while(fscanf(p,"%d %s %s %s %s",&first->count,&first->time,&first->email,&first->title,&first->description) != EOF)   // reading the patent file 
     {
         if(strcmp(first->email,a) == 0)     // if email matches from the email given
@@ -216,7 +216,7 @@ struct dash cdashboard(char a[30]) // function for creater dashboard takes email
     }
     b.patent = count;
     fclose(p);
-    p = fopen("C:\\Users\\assu\\OneDrive\\Desktop\\folders\\Projects\\projecthub\\Files\\selectedideas.txt","r");
+    p = fopen("C:\\Files\\selectedideas.txt","r");
     while(1) 
     {  
         second = (struct ideaselect2 *)malloc(sizeof(struct ideaselect2));
