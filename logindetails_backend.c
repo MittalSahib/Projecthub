@@ -13,7 +13,7 @@ int signup(char a[30], char b[30], char c[15]) // function for signing up
     strcpy(first->name, a);
     strcpy(first->email, b); 
     strcpy(first->password, c);
-    f = fopen("C:\\Users\\assu\\OneDrive\\Desktop\\folders\\Projects\\projecthub\\Files\\sign.txt", "a+");         // opens the file sign.txt
+    f = fopen("C:\\Files\\sign.txt", "a+");         // opens the file sign.txt
     if (f == NULL)
     {
         free(first);
@@ -28,7 +28,7 @@ int login(char a[30], char b[15])       // function for login
 {
     FILE *f = NULL;
     struct node *first = (struct node *)malloc(sizeof(struct node));
-    f = fopen("C:\\Users\\assu\\OneDrive\\Desktop\\folders\\Projects\\projecthub\\Files\\sign.txt", "r");       // opens the sign.txt file in read form 
+    f = fopen("C:\\Files\\sign.txt", "r");       // opens the sign.txt file in read form 
     if(f == NULL) return 1;  // return 1 if file does not open 
     while(fscanf(f,"%s%s%s",first->email, first->password, first->name) != EOF)
     {
