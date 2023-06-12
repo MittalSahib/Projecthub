@@ -3,3 +3,4 @@ Our program is a platform that allows a creator who has built a unique project t
 To operate and run the file in your compiler you need a c compiler.
 download all 4 files from the repository and keep them at one place.
 create one folder in c drive with name "Files" and save all 3 txt file from the repository in it.
+now open frontend.c file and run it on c compiler and you can run the program easily.
