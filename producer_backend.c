@@ -26,7 +26,7 @@ struct search *searching()
     struct search *second,*third,*head;
     FILE *p;
     int count = 0;
-    p = fopen("C:\\Users\\assu\\OneDrive\\Desktop\\folders\\Projects\\projecthub\\Files\\patent.txt","r");
+    p = fopen("C:\\Files\\patent.txt","r");
     while(fscanf(p,"%d %s %s %s %s",&first->count,&first->time,&first->email,&first->title,&first->description) != EOF)
     {
         second = (struct search *)malloc(sizeof(struct search));
@@ -50,8 +50,8 @@ int ideaselection(char pemail[30],char cemail[30],int patentno)
     int i;
     struct patentideas *first = (struct patentideas *)malloc(sizeof(struct patentideas));
     struct ideaselect *second = (struct ideaselect *)malloc(sizeof(struct ideaselect));
-    p = fopen("C:\\Users\\assu\\OneDrive\\Desktop\\folders\\Projects\\projecthub\\Files\\patent.txt","r");
-    sp = fopen("C:\\Users\\assu\\OneDrive\\Desktop\\folders\\Projects\\projecthub\\Files\\selectedideas.txt","a+");
+    p = fopen("C:\\Files\\patent.txt","r");
+    sp = fopen("C:\\Files\\selectedideas.txt","a+");
     if(sp == NULL || p == NULL)
     {
         free(first);
@@ -96,7 +96,7 @@ struct ideaselect *ideastatus(char email[30])
     FILE *sp;
     int count = 0,i;
     struct ideaselect *first = (struct ideaselect *)malloc(sizeof(struct ideaselect)),*head,*second;
-    sp = fopen("C:\\Users\\assu\\OneDrive\\Desktop\\folders\\Projects\\projecthub\\Files\\selectedideas.txt","r");
+    sp = fopen("C:\\Files\\selectedideas.txt","r");
     while(fscanf(sp,"%d %s %s %s %s",&first->patentno,&first->cemail,&first->pemail,&first->time,&first->acc) != EOF)
     {
         if(strcmp(first->pemail,email) == 0)
